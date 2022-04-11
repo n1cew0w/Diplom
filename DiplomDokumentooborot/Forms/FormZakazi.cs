@@ -16,5 +16,10 @@ namespace DiplomDokumentooborot.Forms
         {
             InitializeComponent();
         }
+
+        private void FormZakazi_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
