@@ -41,7 +41,7 @@ namespace DiplomDokumentooborot
             Application.Run(new MainForm());
         }
 
-        //Класс необходимый для хранения состояния авторизации во время работы программы
+       
         
     }
 }

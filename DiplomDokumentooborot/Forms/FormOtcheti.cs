@@ -9,126 +9,41 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using YandexDisk.Client.Clients;
+using YandexDisk.Client.Http;
+using YandexDisk.Client.Protocol;
 
 namespace DiplomDokumentooborot.Forms
 {
     public partial class FormOtcheti : Form
     {
-       
-       
+        DiskHttpApi api = new DiskHttpApi("AQAAAAAMGeW_AAfSUTnWf4rWjUYavTHgNvrryg4");
+        
+        public async void GetSomeFiles()
+        {
+            //https://localhost:1337/callback#access_token=AQAAAAAMGeW_AAfSUTnWf4rWjUYavTHgNvrryg4&token_type=bearer&expires_in=31536000
+            var api = new DiskHttpApi("AQAAAAAMGeW_AAfSUTnWf4rWjUYavTHgNvrryg4");
+            var roodFolderData = await api.MetaInfo.GetInfoAsync(new ResourceRequest { Path = "/DownloadFolder" });
+            foreach (var item in roodFolderData.Embedded.Items)
+            {
+                listView2.Items.Add($"{item.Name}");
+            }
+        }
         public FormOtcheti()
         {
             InitializeComponent();
             
         }
-        FtpWebRequest request = null;
-        FtpWebResponse response = null;
-        Stream ftpStream = null;
-        int length = 1024;
-
-        private List<string> ListFiles()
-        {
-            try
-            {
-                request = (FtpWebRequest)WebRequest.Create(txtServer.Text);
-                request.Method = WebRequestMethods.Ftp.ListDirectory;
-
-                request.Credentials = new NetworkCredential(txtUser.Text, txtPassword.Text);
-                response = (FtpWebResponse)request.GetResponse();
-                ftpStream = response.GetResponseStream();
-                StreamReader reader = new StreamReader(ftpStream);
-                string names = reader.ReadToEnd();
-
-                reader.Close();
-                response.Close();
-                request = null;
-
-                return names.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
-            }
-
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-        private void FormOtcheti_Load(object sender, EventArgs e)
-        {
-            
-        }
-        private void btnView_Click(object sender, EventArgs e)
-        {
-            
-
-        }
-
-        private void listView1_ItemActivate(object sender, EventArgs e)
-        {
-            Download();
-        }
-
-
-
-
-        private void Download()
-        {
-            try
-            {
-                string str = listView1.SelectedItems[0].Text;
-                request = (FtpWebRequest)WebRequest.Create(txtServer.Text + "/" + str);
-                request.Credentials = new NetworkCredential(txtUser.Text, txtPassword.Text);
-                request.UseBinary = true;
-                request.UsePassive = true;
-                request.KeepAlive = true;
-                request.Method = WebRequestMethods.Ftp.DownloadFile;
-                response = (FtpWebResponse)request.GetResponse();
-                ftpStream = response.GetResponseStream();
-                saveFileDialog1.FileName = str;
-                DialogResult result = saveFileDialog1.ShowDialog();
-                byte[] bytebuffer = new byte[length];
-                int bytesRead = ftpStream.Read(bytebuffer, 0, length);
-                if (result == DialogResult.OK)
-                {
-                    FileStream fs = new FileStream(saveFileDialog1.FileName, FileMode.Create);
-                    try
-                    {
-                        while (bytesRead > 0)
-                        {
-                            fs.Write(bytebuffer, 0, bytesRead);
-                            bytesRead = ftpStream.Read(bytebuffer, 0, length);
-                        }
-                        MessageBox.Show("Vse chetko", "Information", MessageBoxButtons.OK);
-                        fs.Close();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString());
-                    }
-                }
-                ftpStream.Close();
-                response.Close();
-                request = null;
-            }
-            catch
-            {
-                MessageBox.Show("Выбери файл перед загрузкой", "Ошибка", MessageBoxButtons.OK);
-            }
-        }
-
-
+     
         
-
-        private void btnView_Click_1(object sender, EventArgs e)
+        private async void FormOtcheti_Load(object sender, EventArgs e)
         {
-            listView1.Clear();
-            List<string> listFiles = ListFiles();
-            for (int i = 0; i < listFiles.Count; i++)
-            {
-                listView1.Items.Add(listFiles[i]);
-            }
+            GetSomeFiles();
+           
         }
+       
 
-        private void btnPickFile_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
             DialogResult result = openFileDialog1.ShowDialog();
 
@@ -136,47 +51,59 @@ namespace DiplomDokumentooborot.Forms
             {
                 this.txtFile.Text = openFileDialog1.FileName;
             }
+
         }
 
-        private void btnUpload_Click_1(object sender, EventArgs e)
+        private async void button2_Click(object sender, EventArgs e)
         {
-            if (txtFile.Text != string.Empty)
+            var api = new DiskHttpApi("AQAAAAAMGeW_AAfSUTnWf4rWjUYavTHgNvrryg4");
+            const string folderName = "DownloadFolder";
+            var roodFolderData = await api.MetaInfo.GetInfoAsync(new ResourceRequest { Path = "/" });
+            if (!roodFolderData.Embedded.Items.Any(i=>i.Type==ResourceType.Dir && i.Name.Equals(folderName)))
             {
-                FileInfo fi = new FileInfo(txtFile.Text);
+                await api.Commands.CreateDictionaryAsync("/" + folderName);
+            }
 
-                request = (FtpWebRequest)WebRequest.Create(txtServer.Text +
-                    "/" + fi.Name);
-                request.Method = WebRequestMethods.Ftp.UploadFile;
-                request.Credentials = new NetworkCredential(txtUser.Text, txtPassword.Text);
-
-                ftpStream = request.GetRequestStream();
-                FileStream file = File.OpenRead(txtFile.Text);
-
-                byte[] buffer = new byte[length];
-                int bytesRead = 0;
-
-                do
+            var link = await api.Files.GetUploadLinkAsync("/" + folderName + "/" + Path.GetFileName(txtFile.Text), overwrite: false);
+            using (var fs = File.OpenRead(txtFile.Text))
+            {
+                await api.Files.UploadAsync(link, fs);
+            }
+            listView2.Clear();
+            GetSomeFiles();
+            
+        }
+        public async void DownloadFile()
+        {
+            const string folderName = "DownloadFolder";
+            var destDir = Path.Combine(Environment.CurrentDirectory, "Download");
+            if (!Directory.Exists(destDir))
+            {
+                Directory.CreateDirectory(destDir);
+            }
+            var testFolderData = await api.MetaInfo.GetInfoAsync(new ResourceRequest
+            {
+                Path = "/" + folderName
+            });
+            foreach (var item in testFolderData.Embedded.Items)
+            {
+                try
                 {
-                    bytesRead = file.Read(buffer, 0, length);
-                    ftpStream.Write(buffer, 0, bytesRead);
-
+                    string current = listView2.SelectedItems[0].Text;
+                    api.Files.DownloadFileAsync(path: item.Path, Path.Combine(destDir, current));
+                    var lnk = await api.Files.GetDownloadLinkAsync(item.Path);
                 }
-                while (bytesRead != 0);
-                file.Close();
-                ftpStream.Close();
-                request = null;
-
-                MessageBox.Show("Vse chetko", "Information", MessageBoxButtons.OK);
-            }
-            else
-            {
-
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+               
             }
         }
-
-        private void btnDownload_Click(object sender, EventArgs e)
+        private async void button3_Click(object sender, EventArgs e)
         {
-            Download();
+            DownloadFile();
         }
     }
-}
+    }
+
