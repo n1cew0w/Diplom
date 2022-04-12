@@ -29,6 +29,19 @@ namespace DiplomDokumentooborot.Forms
                 listView2.Items.Add($"{item.Name}");
             }
         }
+        public async void GetDwnLink()
+        {
+            var roodFolderData = await api.MetaInfo.GetInfoAsync(new ResourceRequest { Path = "/DownloadFolder" });
+            foreach (var item in roodFolderData.Embedded.Items)
+            {
+
+                var lnk = await api.Files.GetDownloadLinkAsync(item.Path);
+               //listBox1.Items.Add(item.Name + "\t" + lnk.Href);
+
+            }
+           
+            
+        }
         public FormOtcheti()
         {
             InitializeComponent();
@@ -36,14 +49,15 @@ namespace DiplomDokumentooborot.Forms
         }
      
         
-        private async void FormOtcheti_Load(object sender, EventArgs e)
+        private void FormOtcheti_Load(object sender, EventArgs e)
         {
+            
             GetSomeFiles();
            
         }
        
 
-        private async void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             DialogResult result = openFileDialog1.ShowDialog();
 
@@ -100,7 +114,7 @@ namespace DiplomDokumentooborot.Forms
                
             }
         }
-        private async void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
             DownloadFile();
         }

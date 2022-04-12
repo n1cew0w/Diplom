@@ -64,9 +64,9 @@
             this.listView2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.listView2.Font = new System.Drawing.Font("Montserrat Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listView2.HideSelection = false;
-            this.listView2.Location = new System.Drawing.Point(341, 12);
+            this.listView2.Location = new System.Drawing.Point(466, 12);
             this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(573, 443);
+            this.listView2.Size = new System.Drawing.Size(656, 443);
             this.listView2.TabIndex = 23;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.List;
@@ -106,7 +106,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
-            this.ClientSize = new System.Drawing.Size(937, 480);
+            this.ClientSize = new System.Drawing.Size(1234, 480);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
