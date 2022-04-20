@@ -118,6 +118,13 @@ namespace DiplomDokumentooborot.Forms
         {
             DownloadFile();
         }
+
+        private void txtFile_TextChanged(object sender, EventArgs e)
+        {
+            SetStyle(System.Windows.Forms.ControlStyles.SupportsTransparentBackColor | System.Windows.Forms.ControlStyles.UserPaint | System.Windows.Forms.ControlStyles.AllPaintingInWmPaint, true);
+            this.BackColor = Color.Transparent;
+            
+        }
     }
     }
 
