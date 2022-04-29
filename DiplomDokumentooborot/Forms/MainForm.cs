@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DiplomDokumentooborot.Forms;
 using FontAwesome.Sharp;
+using static DiplomDokumentooborot.Forms.FormZakazi;
 
 namespace DiplomDokumentooborot
 {//TESTTWATATWATATWATWATWATWATA
@@ -98,33 +99,39 @@ namespace DiplomDokumentooborot
 
             
         }
-
+        void Reload(string param)
+        {
+            //Здесь чего нибудь делаем.
+            //Это непосредственно то что выполнится по событию.
+        }
         public void ManagerRole(int role)
         {
+            
+
+            FormZakazi form = new FormZakazi();
+           
             switch (role)
             {
+                
                 //И в зависимости от того, какая роль (цифра) хранится в поле класса и передана в метод, показываются те или иные кнопки.
-                //Вы можете скрыть их и не отображать вообще, здесь они просто выключены
+               
                 case 1:
-
                     
+
                     break;
                 case 2:
                     iconButton1.Enabled = false;
                     iconButton1.BackColor = Color.Transparent;
                     iconButton1.Text = "Недоступно!";
+                    form.button1.Enabled = false;   
                    
+
+
                     break;
-                case 3:
-                    label1.Text = "Минимальный";
-                    label1.ForeColor = Color.Yellow;
-                   
-                    break;
-                //Если по какой то причине в классе ничего не содержится, то всё отключается вообще
+                //Еси по какой то причине в классе ничего не содержится, то всё отключается вообще
                 default:
                     label1.Text = "Неопределённый";
                     label1.ForeColor = Color.Red;
-                   
                     break;
             }
         }
@@ -176,7 +183,7 @@ namespace DiplomDokumentooborot
             ActivateButton(sender, RGBColors.color2);
             
             OpenChildForm(new FormZakazi());
-            lblTitleChildForm.Text = "Заказы";
+            lblTitleChildForm.Text = "Заявки";
         }
 
         private void iconButton3_Click(object sender, EventArgs e)

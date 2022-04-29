@@ -13,6 +13,7 @@ namespace DiplomDokumentooborot.Forms
 {
     public partial class FormZakazi : Form
     {
+
         AddZakaz Add = new AddZakaz();
         static string index_selected_rows;
         static string id_selected_rows;
@@ -39,7 +40,7 @@ namespace DiplomDokumentooborot.Forms
             {
 
                 //Запрос для вывода строк в БД
-                string commandStr = "SELECT id AS 'ID',  topic AS 'Тема', type_problem AS 'Тип проблемы', status AS 'Статус', ispoln AS 'Исполнитель'  FROM applications";
+                string commandStr = "SELECT id AS 'ID',date AS Дата,  topic AS 'Тема', type_problem AS 'Тип проблемы', status AS 'Статус', ispoln AS 'Исполнитель'  FROM applications";
                 //Открываем соединение
                 conn.Open();
                 //Объявляем команду, которая выполнить запрос в соединении conn
@@ -110,15 +111,109 @@ namespace DiplomDokumentooborot.Forms
                 textBox3.Text = "";
                 textBox4.Text = "";
             }
-            public void changeColor(DataGridView dataGridView1)
+            public void setStatusNew(BindingSource bindingSource1,DataGridView dataGridView1)
             {
-               
+                //Получаем ID пользователя
+                var id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+                //string id = class_edit_user.id;
+                string SQL_izm = "UPDATE applications SET status= 'Новая' where id=" + id;
+                MessageBox.Show(SQL_izm);
+                MySqlConnection conn = new MySqlConnection("server=chuc.caseum.ru;port=33333;user=st_1_18_13;database=is_1_18_st13_VKR;password=72511715;");
+                conn.Open();
+                MySqlCommand command1 = new MySqlCommand(SQL_izm, conn);
+                MySqlDataReader dr = command1.ExecuteReader();
+                dr.Close();
+                conn.Close();
+                MessageBox.Show("Данные изменены");
+                //this.Activate();
+
+                Orders orders = new Orders();
+                orders.reload_list(bindingSource1, dataGridView1);
             }
+            public void setStatusOtmena(BindingSource bindingSource1, DataGridView dataGridView1)
+            {
+                //Получаем ID пользователя
+                var id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+                //string id = class_edit_user.id;
+                string SQL_izm = "UPDATE applications SET status= 'Отменена' where id=" + id;
+                MessageBox.Show(SQL_izm);
+                MySqlConnection conn = new MySqlConnection("server=chuc.caseum.ru;port=33333;user=st_1_18_13;database=is_1_18_st13_VKR;password=72511715;");
+                conn.Open();
+                MySqlCommand command1 = new MySqlCommand(SQL_izm, conn);
+                MySqlDataReader dr = command1.ExecuteReader();
+                dr.Close();
+                conn.Close();
+                MessageBox.Show("Данные изменены");
+                //this.Activate();
+
+                Orders orders = new Orders();
+                orders.reload_list(bindingSource1, dataGridView1);
+            }
+            public void setStatusWork(BindingSource bindingSource1, DataGridView dataGridView1)
+            {
+                //Получаем ID пользователя
+                var id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+                //string id = class_edit_user.id;
+                string SQL_izm = "UPDATE applications SET status= 'В работе' where id=" + id;
+                MessageBox.Show(SQL_izm);
+                MySqlConnection conn = new MySqlConnection("server=chuc.caseum.ru;port=33333;user=st_1_18_13;database=is_1_18_st13_VKR;password=72511715;");
+                conn.Open();
+                MySqlCommand command1 = new MySqlCommand(SQL_izm, conn);
+                MySqlDataReader dr = command1.ExecuteReader();
+                dr.Close();
+                conn.Close();
+                MessageBox.Show("Данные изменены");
+                //this.Activate();
+
+                Orders orders = new Orders();
+                orders.reload_list(bindingSource1, dataGridView1);
+            }
+            public void setStatusСompleted(BindingSource bindingSource1, DataGridView dataGridView1)
+            {
+                //Получаем ID пользователя
+                var id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+                //string id = class_edit_user.id;
+                string SQL_izm = "UPDATE applications SET status= 'Выполнена' where id=" + id;
+                MessageBox.Show(SQL_izm);
+                MySqlConnection conn = new MySqlConnection("server=chuc.caseum.ru;port=33333;user=st_1_18_13;database=is_1_18_st13_VKR;password=72511715;");
+                conn.Open();
+                MySqlCommand command1 = new MySqlCommand(SQL_izm, conn);
+                MySqlDataReader dr = command1.ExecuteReader();
+                dr.Close();
+                conn.Close();
+                MessageBox.Show("Данные изменены");
+                //this.Activate();
+
+                Orders orders = new Orders();
+                orders.reload_list(bindingSource1, dataGridView1);
+            }
+            public void setStatusNotСompleted(BindingSource bindingSource1, DataGridView dataGridView1)
+            {
+                //Получаем ID пользователя
+                var id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+                //string id = class_edit_user.id;
+                string SQL_izm = "UPDATE applications SET status= 'Не выполнена' where id=" + id;
+                MessageBox.Show(SQL_izm);
+                MySqlConnection conn = new MySqlConnection("server=chuc.caseum.ru;port=33333;user=st_1_18_13;database=is_1_18_st13_VKR;password=72511715;");
+                conn.Open();
+                MySqlCommand command1 = new MySqlCommand(SQL_izm, conn);
+                MySqlDataReader dr = command1.ExecuteReader();
+                dr.Close();
+                conn.Close();
+                MessageBox.Show("Данные изменены");
+                //this.Activate();
+
+                Orders orders = new Orders();
+                orders.reload_list(bindingSource1, dataGridView1);
+            }
+
         }
 
 
         public FormZakazi()
         {
+           
+
             InitializeComponent();
         }
 
@@ -151,10 +246,10 @@ namespace DiplomDokumentooborot.Forms
             dataGridView1.RowHeadersVisible = false;
             //Показываем заголовки столбцов
             dataGridView1.ColumnHeadersVisible = true;
-            orders.changeColor(dataGridView1);
+            
         }
         
-        private void button1_Click(object sender, EventArgs e)
+        public void button1_Click(object sender, EventArgs e)
         {
             Add.Show();
             Orders orders = new Orders();
@@ -207,6 +302,36 @@ namespace DiplomDokumentooborot.Forms
                 }
             }
                 
+        }
+
+        private void новаяToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Orders orders = new Orders();
+            orders.setStatusNew(bindingSource1, dataGridView1);
+        }
+
+        private void вРаботеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Orders orders = new Orders();
+            orders.setStatusWork(bindingSource1, dataGridView1);
+        }
+
+        private void отмененаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Orders orders = new Orders();
+            orders.setStatusOtmena(bindingSource1, dataGridView1);
+        }
+
+        private void выполненаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Orders orders = new Orders();
+            orders.setStatusСompleted(bindingSource1, dataGridView1);
+        }
+
+        private void неВыполненаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Orders orders = new Orders();
+            orders.setStatusNotСompleted(bindingSource1, dataGridView1);
         }
     }
 }

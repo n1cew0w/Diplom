@@ -32,9 +32,16 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.новаяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.вРаботеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.отмененаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.выполненаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.неВыполненаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,11 +69,58 @@
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.Color.SlateBlue;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
             this.dataGridView1.Location = new System.Drawing.Point(13, 87);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(776, 351);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.новаяToolStripMenuItem,
+            this.вРаботеToolStripMenuItem,
+            this.отмененаToolStripMenuItem,
+            this.выполненаToolStripMenuItem,
+            this.неВыполненаToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 136);
+            // 
+            // новаяToolStripMenuItem
+            // 
+            this.новаяToolStripMenuItem.Name = "новаяToolStripMenuItem";
+            this.новаяToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.новаяToolStripMenuItem.Text = "Новая";
+            this.новаяToolStripMenuItem.Click += new System.EventHandler(this.новаяToolStripMenuItem_Click);
+            // 
+            // вРаботеToolStripMenuItem
+            // 
+            this.вРаботеToolStripMenuItem.Name = "вРаботеToolStripMenuItem";
+            this.вРаботеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.вРаботеToolStripMenuItem.Text = "В работе ";
+            this.вРаботеToolStripMenuItem.Click += new System.EventHandler(this.вРаботеToolStripMenuItem_Click);
+            // 
+            // отмененаToolStripMenuItem
+            // 
+            this.отмененаToolStripMenuItem.Name = "отмененаToolStripMenuItem";
+            this.отмененаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.отмененаToolStripMenuItem.Text = "Отменена";
+            this.отмененаToolStripMenuItem.Click += new System.EventHandler(this.отмененаToolStripMenuItem_Click);
+            // 
+            // выполненаToolStripMenuItem
+            // 
+            this.выполненаToolStripMenuItem.Name = "выполненаToolStripMenuItem";
+            this.выполненаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.выполненаToolStripMenuItem.Text = "Выполнена";
+            this.выполненаToolStripMenuItem.Click += new System.EventHandler(this.выполненаToolStripMenuItem_Click);
+            // 
+            // неВыполненаToolStripMenuItem
+            // 
+            this.неВыполненаToolStripMenuItem.Name = "неВыполненаToolStripMenuItem";
+            this.неВыполненаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.неВыполненаToolStripMenuItem.Text = "Не выполнена";
+            this.неВыполненаToolStripMenuItem.Click += new System.EventHandler(this.неВыполненаToolStripMenuItem_Click);
             // 
             // button4
             // 
@@ -92,16 +146,23 @@
             this.Text = "FormZakazi";
             this.Load += new System.EventHandler(this.FormZakazi_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        public System.Windows.Forms.Button button2;
+        public System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem новаяToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem вРаботеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem отмененаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem выполненаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem неВыполненаToolStripMenuItem;
     }
 }

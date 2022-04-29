@@ -94,11 +94,11 @@
     <Compile Include="Forms\FormStaff.Designer.cs">
       <DependentUpon>FormStaff.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Zayavki\FormZayavki.cs">
+    <Compile Include="Forms\Zayavki\formZakazi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Zayavki\FormZayavki.Designer.cs">
-      <DependentUpon>FormZayavki.cs</DependentUpon>
+    <Compile Include="Forms\Zayavki\formZakazi.Designer.cs">
+      <DependentUpon>formZakazi.cs</DependentUpon>
     </Compile>
     <Compile Include="TestFTP.cs">
       <SubType>Form</SubType>
@@ -126,8 +126,8 @@
     <EmbeddedResource Include="Forms\FormStaff.resx">
       <DependentUpon>FormStaff.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Zayavki\FormZayavki.resx">
-      <DependentUpon>FormZayavki.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Zayavki\formZakazi.resx">
+      <DependentUpon>formZakazi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TestFTP.resx">
       <DependentUpon>TestFTP.cs</DependentUpon>

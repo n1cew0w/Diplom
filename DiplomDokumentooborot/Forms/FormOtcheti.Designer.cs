@@ -129,7 +129,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtFile;
         private System.Windows.Forms.ListView listView2;
-        private System.Windows.Forms.Button button1;
+        public System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
     }
