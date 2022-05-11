@@ -42,6 +42,12 @@ namespace DiplomDokumentooborot.Forms
            
             
         }
+        public async void Delete()
+        {
+            var api = new DiskHttpApi("AQAAAAAMGeW_AAfSUTnWf4rWjUYavTHgNvrryg4");
+            var roodFolderData = await api.MetaInfo.GetInfoAsync(new ResourceRequest { Path = "/DownloadFolder" });
+            
+        }
         public FormOtcheti()
         {
             InitializeComponent();
@@ -117,6 +123,8 @@ namespace DiplomDokumentooborot.Forms
         private void button3_Click(object sender, EventArgs e)
         {
             DownloadFile();
+            var destDir = Path.Combine(Environment.CurrentDirectory, "Download");
+            System.Diagnostics.Process.Start(Environment.CurrentDirectory,destDir);
         }
 
         private void txtFile_TextChanged(object sender, EventArgs e)

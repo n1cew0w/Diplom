@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace DiplomDokumentooborot.Forms
 {
@@ -332,6 +333,36 @@ namespace DiplomDokumentooborot.Forms
         {
             Orders orders = new Orders();
             orders.setStatusNotСompleted(bindingSource1, dataGridView1);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            // Установить заголовки столбцов в ячейках
+
+            Excel.Application exApp = new Excel.Application();
+
+            exApp.Workbooks.Add();
+            Excel.Worksheet wsh = (Excel.Worksheet)exApp.ActiveSheet;
+
+            wsh.Cells[1, "A"] = "Номер ";
+            wsh.Cells[1, "B"] = "Дата";
+            wsh.Cells[1, "C"] = "Тема";
+            wsh.Cells[1, "D"] = "Тип проблемы";
+            wsh.Cells[1, "E"] = "Статус";
+            wsh.Cells[1, "F"] = "Исполнитель";
+
+            int i, j;
+            for (i = 0; i <= dataGridView1.RowCount - 2; i++)
+            {
+                for (j = 0; j <= dataGridView1.ColumnCount - 1; j++)
+                {
+                    wsh.Cells[i + 2, j + 1] = dataGridView1[j, i].Value.ToString();
+                }
+            }
+
+
+
+            exApp.Visible = true;
         }
     }
 }
