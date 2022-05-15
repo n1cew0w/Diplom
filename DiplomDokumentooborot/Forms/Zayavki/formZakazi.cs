@@ -207,7 +207,51 @@ namespace DiplomDokumentooborot.Forms
                 Orders orders = new Orders();
                 orders.reload_list(bindingSource1, dataGridView1);
             }
-
+            public void GetComboBoxList(ComboBox comboBox1)
+            {
+                MySqlConnection conn = new MySqlConnection("server=chuc.caseum.ru;port=33333;user=st_1_18_13;database=is_1_18_st13_VKR;password=72511715;");
+                //Формирование списка статусов
+                DataTable list_stud_table = new DataTable();
+                MySqlCommand list_stud_command = new MySqlCommand();
+                //Открываем соединение
+                conn.Open();
+                //Формируем столбцы для комбобокса списка ЦП
+                list_stud_table.Columns.Add(new DataColumn("id", System.Type.GetType("System.Int32")));
+                list_stud_table.Columns.Add(new DataColumn("fio", System.Type.GetType("System.String")));
+                //Настройка видимости полей комбобокса
+                comboBox1.DataSource = list_stud_table;
+                comboBox1.DisplayMember = "fio";
+                comboBox1.ValueMember = "id";
+                //Формируем строку запроса на отображение списка статусов прав пользователя
+                string sql_list_users = "SELECT id, fio FROM staff";
+                list_stud_command.CommandText = sql_list_users;
+                list_stud_command.Connection = conn;
+                //Формирование списка ЦП для combobox'a
+                MySqlDataReader list_stud_reader;
+                try
+                {
+                    //Инициализируем ридер
+                    list_stud_reader = list_stud_command.ExecuteReader();
+                    while (list_stud_reader.Read())
+                    {
+                        DataRow rowToAdd = list_stud_table.NewRow();
+                        rowToAdd["id"] = Convert.ToInt32(list_stud_reader[0]);
+                        rowToAdd["fio"] = list_stud_reader[1].ToString();
+                        list_stud_table.Rows.Add(rowToAdd);
+                    }
+                    list_stud_reader.Close();
+                    conn.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка чтения списка ЦП \n\n" + ex, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Application.Exit();
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
         }
 
 
@@ -223,7 +267,7 @@ namespace DiplomDokumentooborot.Forms
             
             Orders orders = new Orders();
             orders.GetListOrders(bindingSource1, dataGridView1);
-            
+            orders.GetComboBoxList(comboBox1);
 
             dataGridView1.Columns[0].Visible = true;
             dataGridView1.Columns[1].Visible = true;
@@ -363,6 +407,19 @@ namespace DiplomDokumentooborot.Forms
 
 
             exApp.Visible = true;
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            bindingSource1.Filter = "Исполнитель LIKE'" + comboBox1.Text + "%'";
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            comboBox1.Text = "";
+            Orders orders = new Orders();
+            orders.GetListOrders(bindingSource1, dataGridView1);
+
         }
     }
 }
