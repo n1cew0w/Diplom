@@ -70,6 +70,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Staff\FormDogovor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Staff\FormDogovor.Designer.cs">
+      <DependentUpon>FormDogovor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Staff\WordHelper.cs" />
     <Compile Include="Forms\Zayavki\AddZayavki.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,10 +95,10 @@
     <Compile Include="Forms\FormOtcheti.Designer.cs">
       <DependentUpon>FormOtcheti.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormStaff.cs">
+    <Compile Include="Forms\Staff\FormStaff.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormStaff.Designer.cs">
+    <Compile Include="Forms\Staff\FormStaff.Designer.cs">
       <DependentUpon>FormStaff.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Zayavki\formZakazi.cs">
@@ -114,6 +121,9 @@
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\Staff\FormDogovor.resx">
+      <DependentUpon>FormDogovor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Zayavki\AddZayavki.resx">
       <DependentUpon>AddZayavki.cs</DependentUpon>
     </EmbeddedResource>
@@ -123,7 +133,7 @@
     <EmbeddedResource Include="Forms\FormOtcheti.resx">
       <DependentUpon>FormOtcheti.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormStaff.resx">
+    <EmbeddedResource Include="Forms\Staff\FormStaff.resx">
       <DependentUpon>FormStaff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Zayavki\formZakazi.resx">
@@ -145,6 +155,9 @@
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="blank-trudovogo-dogovora.docx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -164,6 +177,35 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\lS5mACRPapE1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Word">
+      <Guid>{00020905-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>8</VersionMajor>
+      <VersionMinor>6</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -279,6 +279,7 @@ namespace DiplomDokumentooborot.Forms
             dataGridView1.Columns[2].FillWeight = 10;
             dataGridView1.Columns[3].FillWeight = 10;
             dataGridView1.Columns[4].FillWeight = 10;
+            dataGridView1.Columns[5].FillWeight = 10;
 
             //Растягивание полей грида
             dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -286,6 +287,9 @@ namespace DiplomDokumentooborot.Forms
             dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+
 
             //Убираем заголовки строк
             dataGridView1.RowHeadersVisible = false;

@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using YandexDisk.Client.Clients;
@@ -42,12 +43,28 @@ namespace DiplomDokumentooborot.Forms
            
             
         }
-        public async void Delete()
-        {
-            var api = new DiskHttpApi("AQAAAAAMGeW_AAfSUTnWf4rWjUYavTHgNvrryg4");
-            var roodFolderData = await api.MetaInfo.GetInfoAsync(new ResourceRequest { Path = "/DownloadFolder" });
+        DeleteFileRequest DeleteFileRequest;
+        
+        //public async void Delete()
+        //{
             
-        }
+        //    var api = new DiskHttpApi("AQAAAAAMGeW_AAfSUTnWf4rWjUYavTHgNvrryg4");
+        //    const string folderName = "DownloadFolder";
+        //    var roodFolderData = await api.MetaInfo.GetInfoAsync(new ResourceRequest { Path = "/" });
+        //    if (!roodFolderData.Embedded.Items.Any(i => i.Type == ResourceType.Dir && i.Name.Equals(folderName)))
+        //    {
+        //        await api.Commands.CreateDictionaryAsync("/" + folderName);
+        //    }
+
+        //    //var link = await api.Commands.DeleteAsync("/" + folderName + "/" + Path.GetFileName(txtFile.Text) );
+        //    using (var fs = File.OpenRead(txtFile.Text))
+        //    {
+        //        await api.Commands.DeleteAsync(link, fs);
+        //    }
+        //    listView2.Clear();
+        //    GetSomeFiles();
+
+        //}
         public FormOtcheti()
         {
             InitializeComponent();
@@ -132,6 +149,11 @@ namespace DiplomDokumentooborot.Forms
             SetStyle(System.Windows.Forms.ControlStyles.SupportsTransparentBackColor | System.Windows.Forms.ControlStyles.UserPaint | System.Windows.Forms.ControlStyles.AllPaintingInWmPaint, true);
             this.BackColor = Color.Transparent;
             
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
         }
     }
     }

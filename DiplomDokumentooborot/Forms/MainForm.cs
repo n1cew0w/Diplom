@@ -262,5 +262,10 @@ namespace DiplomDokumentooborot
                 this.WindowState = FormWindowState.Normal;
             }
         }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            System.Diagnostics.Process.GetCurrentProcess().Kill();
+        }
     }
 }

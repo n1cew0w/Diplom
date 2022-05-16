@@ -368,6 +368,7 @@
             this.MinimumSize = new System.Drawing.Size(1377, 592);
             this.Name = "MainForm";
             this.Text = "Главная";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.TestAuth_Load);
             this.panelMenu.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);

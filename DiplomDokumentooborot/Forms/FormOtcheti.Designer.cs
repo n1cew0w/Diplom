@@ -36,6 +36,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -62,10 +63,11 @@
             // 
             // listView2
             // 
+            this.listView2.BackColor = System.Drawing.Color.SlateBlue;
             this.listView2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.listView2.Font = new System.Drawing.Font("Montserrat Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listView2.HideSelection = false;
-            this.listView2.Location = new System.Drawing.Point(466, 12);
+            this.listView2.Location = new System.Drawing.Point(471, 12);
             this.listView2.Name = "listView2";
             this.listView2.Size = new System.Drawing.Size(656, 443);
             this.listView2.TabIndex = 23;
@@ -102,12 +104,23 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(110, 234);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 27;
+            this.button4.Text = "button4";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // FormOtcheti
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
             this.ClientSize = new System.Drawing.Size(1139, 480);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -116,7 +129,7 @@
             this.Controls.Add(this.txtFile);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Name = "FormOtcheti";
-            this.Text = "FormOtcheti";
+            this.Text = "Отчеты";
             this.Load += new System.EventHandler(this.FormOtcheti_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -132,5 +145,6 @@
         public System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
     }
 }

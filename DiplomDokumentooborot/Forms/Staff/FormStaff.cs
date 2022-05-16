@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using Excel = Microsoft.Office.Interop.Excel;
+using DiplomDokumentooborot.Forms;
+using DiplomDokumentooborot.Forms.Staff;
 
 namespace DiplomDokumentooborot.Forms
 {
@@ -16,9 +18,11 @@ namespace DiplomDokumentooborot.Forms
     {
         static string index_selected_rows;
         static string id_selected_rows;
+        
         public class DBOperation
         {
             //Переменная соединения
+            
 
             MySqlConnection conn = new MySqlConnection("server=chuc.caseum.ru;port=33333;user=st_1_18_13;database=is_1_18_st13_VKR;password=72511715;");
             
@@ -262,8 +266,13 @@ namespace DiplomDokumentooborot.Forms
             }
 
 
-
             exApp.Visible = true;
+
+        }
+        FormDogovor Dogovor = new FormDogovor();
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Dogovor.ShowDialog();
         }
     }
 }
