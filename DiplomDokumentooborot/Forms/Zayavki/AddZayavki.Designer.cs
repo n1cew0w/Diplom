@@ -40,20 +40,22 @@
             this.label5 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(120, 71);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(167, 20);
+            this.textBox2.Size = new System.Drawing.Size(213, 20);
             this.textBox2.TabIndex = 0;
             // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(120, 33);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(167, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(213, 20);
             this.dateTimePicker1.TabIndex = 1;
             // 
             // label1
@@ -97,7 +99,7 @@
             "Телефония"});
             this.comboBox1.Location = new System.Drawing.Point(120, 113);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(167, 21);
+            this.comboBox1.Size = new System.Drawing.Size(213, 21);
             this.comboBox1.TabIndex = 3;
             // 
             // comboBox2
@@ -111,15 +113,15 @@
             "Не выполнена"});
             this.comboBox2.Location = new System.Drawing.Point(120, 162);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(167, 21);
+            this.comboBox2.Size = new System.Drawing.Size(213, 21);
             this.comboBox2.TabIndex = 4;
             // 
             // comboBox3
             // 
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(120, 213);
+            this.comboBox3.Location = new System.Drawing.Point(120, 208);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(167, 21);
+            this.comboBox3.Size = new System.Drawing.Size(213, 21);
             this.comboBox3.TabIndex = 5;
             // 
             // label4
@@ -136,7 +138,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.Transparent;
-            this.label5.Location = new System.Drawing.Point(23, 216);
+            this.label5.Location = new System.Drawing.Point(23, 211);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(74, 13);
             this.label5.TabIndex = 2;
@@ -144,9 +146,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(26, 283);
+            this.button1.Location = new System.Drawing.Point(26, 381);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(261, 31);
+            this.button1.Size = new System.Drawing.Size(307, 31);
             this.button1.TabIndex = 6;
             this.button1.Text = "Добавить";
             this.button1.UseVisualStyleBackColor = true;
@@ -154,19 +156,39 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(26, 342);
+            this.button2.Location = new System.Drawing.Point(26, 418);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(261, 33);
+            this.button2.Size = new System.Drawing.Size(307, 33);
             this.button2.TabIndex = 7;
             this.button2.Text = "Назад";
             this.button2.UseVisualStyleBackColor = true;
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(120, 256);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(213, 96);
+            this.richTextBox1.TabIndex = 8;
+            this.richTextBox1.Text = "";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.Color.Transparent;
+            this.label6.Location = new System.Drawing.Point(23, 293);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(65, 13);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Сообщение";
             // 
             // AddZakaz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
-            this.ClientSize = new System.Drawing.Size(345, 425);
+            this.ClientSize = new System.Drawing.Size(345, 463);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comboBox3);
@@ -200,5 +222,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Label label6;
     }
 }

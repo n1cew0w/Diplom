@@ -14,8 +14,11 @@ namespace DiplomDokumentooborot.Forms
 {
     public partial class FormZakazi : Form
     {
-
+        
+       
+       
         AddZakaz Add = new AddZakaz();
+        
         static string index_selected_rows;
         static string id_selected_rows;
         public class Orders
@@ -41,7 +44,7 @@ namespace DiplomDokumentooborot.Forms
             {
 
                 //Запрос для вывода строк в БД
-                string commandStr = "SELECT id AS 'ID',date AS Дата,  topic AS 'Тема', type_problem AS 'Тип проблемы', status AS 'Статус', ispoln AS 'Исполнитель'  FROM applications";
+                string commandStr = "SELECT id AS 'ID',date AS Дата,  topic AS 'Тема', type_problem AS 'Тип проблемы', status AS 'Статус', ispoln AS 'Исполнитель', message AS 'Исполнитель'  FROM applications";
                 //Открываем соединение
                 conn.Open();
                 //Объявляем команду, которая выполнить запрос в соединении conn
@@ -264,7 +267,7 @@ namespace DiplomDokumentooborot.Forms
 
         private void FormZakazi_Load(object sender, EventArgs e)
         {
-            
+            this.restart();
             Orders orders = new Orders();
             orders.GetListOrders(bindingSource1, dataGridView1);
             orders.GetComboBoxList(comboBox1);
@@ -272,6 +275,8 @@ namespace DiplomDokumentooborot.Forms
             dataGridView1.Columns[0].Visible = true;
             dataGridView1.Columns[1].Visible = true;
             dataGridView1.Columns[2].Visible = true;
+            dataGridView1.Columns[6].Visible = false;
+
 
             //Ширина полей
             dataGridView1.Columns[0].FillWeight = 10;
@@ -297,10 +302,16 @@ namespace DiplomDokumentooborot.Forms
             dataGridView1.ColumnHeadersVisible = true;
             
         }
-        
+        public void restart()
+        {
+            Orders orders = new Orders();
+            orders.GetListOrders(bindingSource1, dataGridView1);
+
+        }
         public void button1_Click(object sender, EventArgs e)
         {
-            Add.Show();
+            
+            Add.Show(this);
             Orders orders = new Orders();
             orders.reload_list(bindingSource1, dataGridView1);
         }
@@ -424,6 +435,12 @@ namespace DiplomDokumentooborot.Forms
             Orders orders = new Orders();
             orders.GetListOrders(bindingSource1, dataGridView1);
 
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            richTextBox1.Text =
+                dataGridView1[6, dataGridView1.CurrentRow.Index].Value.ToString();
         }
     }
 }

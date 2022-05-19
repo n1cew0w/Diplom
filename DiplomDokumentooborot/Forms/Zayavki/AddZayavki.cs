@@ -18,7 +18,7 @@ namespace DiplomDokumentooborot.Forms
         public class OrdersAdd
         {
            
-            public void InsertApp(DateTimePicker dateTimePicker1, TextBox textBox2, ComboBox comboBox1, ComboBox comboBox2, ComboBox comboBox3)
+            public void InsertApp(DateTimePicker dateTimePicker1, TextBox textBox2, ComboBox comboBox1, ComboBox comboBox2, ComboBox comboBox3,RichTextBox richTextBox1)
             {
                 string connStr = "server=chuc.caseum.ru;port=33333;user=st_1_18_13;database=is_1_18_st13_VKR;password=72511715;";
 
@@ -29,12 +29,13 @@ namespace DiplomDokumentooborot.Forms
                 string new_typeProblem = comboBox1.Text;
                 string new_status = comboBox2.Text;
                 string new_ispoln = comboBox3.Text;
+                string message = richTextBox1.Text;
 
                 if (textBox2.Text.Length > 0)
                 {
                     //Формируем строку запроса на добавление строк
-                    string sql_insert_clothes = " INSERT INTO `applications` (date, topic,type_problem,status,ispoln) " +
-                        "VALUES ('" + new_date + "', '" + new_topic + "', '" + new_typeProblem + "', '" + new_status + "', '" + new_ispoln + "')";
+                    string sql_insert_clothes = " INSERT INTO `applications` (date, topic,type_problem,status,ispoln,message) " +
+                        "VALUES ('" + new_date + "', '" + new_topic + "', '" + new_typeProblem + "', '" + new_status + "', '" + new_ispoln + "', '" + message + "')";
 
 
                     //Посылаем запрос на добавление данных
@@ -120,13 +121,19 @@ namespace DiplomDokumentooborot.Forms
             OrdersAdd orders = new OrdersAdd();
             conn = new MySqlConnection(connStr);
             orders.GetComboBoxList(comboBox3);
+            
+            
         }
-
+        
         private void button1_Click(object sender, EventArgs e)
         {
             OrdersAdd orders = new OrdersAdd();
-            orders.InsertApp(dateTimePicker1, textBox2, comboBox1, comboBox2, comboBox3);
+            orders.InsertApp(dateTimePicker1, textBox2, comboBox1, comboBox2, comboBox3,richTextBox1);
+            //FormZakazi f1 = (FormZakazi)this.Owner;
+            //f1.restart();
+            Application.DoEvents();
             this.Close();
+            
         }
     }
 }

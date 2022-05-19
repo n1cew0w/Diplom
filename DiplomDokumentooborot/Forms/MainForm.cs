@@ -191,7 +191,7 @@ namespace DiplomDokumentooborot
             ActivateButton(sender, RGBColors.color3);
             
             OpenChildForm(new FormOtcheti());
-            lblTitleChildForm.Text = "Отчеты";
+            lblTitleChildForm.Text = "Документы";
         }
 
         private void panelLogo_Paint(object sender, PaintEventArgs e)
@@ -266,6 +266,14 @@ namespace DiplomDokumentooborot
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             System.Diagnostics.Process.GetCurrentProcess().Kill();
+        }
+        
+        private void iconButton4_Click(object sender, EventArgs e)
+        {
+
+
+            System.Diagnostics.Process.Start(Application.ExecutablePath); 
+            this.Close(); 
         }
     }
 }
