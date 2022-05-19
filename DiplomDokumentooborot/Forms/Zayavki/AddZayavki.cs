@@ -124,15 +124,19 @@ namespace DiplomDokumentooborot.Forms
             
             
         }
-        
+        FormZakazi f = new FormZakazi();
+
+
         private void button1_Click(object sender, EventArgs e)
         {
-            OrdersAdd orders = new OrdersAdd();
+            
+               OrdersAdd orders = new OrdersAdd();
             orders.InsertApp(dateTimePicker1, textBox2, comboBox1, comboBox2, comboBox3,richTextBox1);
-            //FormZakazi f1 = (FormZakazi)this.Owner;
-            //f1.restart();
-            Application.DoEvents();
             this.Close();
+            
+            
+            
+            
             
         }
     }

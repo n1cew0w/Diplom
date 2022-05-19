@@ -13,6 +13,11 @@ namespace DiplomDokumentooborot
     {
         public static string id { get; set; }
     }
+    public static class refresh
+    {
+        public static bool DataIsRecieved; // используется для сообщения форме 1, что на форме 2 данные были успешно загружены в БД
+
+    }
     static class Auth
     {
         //Статичное поле, которое хранит значение статуса авторизации

@@ -14,10 +14,8 @@ namespace DiplomDokumentooborot.Forms
 {
     public partial class FormZakazi : Form
     {
+
         
-       
-       
-        AddZakaz Add = new AddZakaz();
         
         static string index_selected_rows;
         static string id_selected_rows;
@@ -256,18 +254,24 @@ namespace DiplomDokumentooborot.Forms
                 }
             }
         }
-
+        //public void UpdateData(BindingSource bindingSource1, DataGridView dataGridView1)
+        //{
+        //    DataTable table = new DataTable();
+        //table.Clear();
+        //    //Вызываем метод получения записей, который вновь заполнит таблицу
+        //    Orders orders = new Orders();
+        //    orders.GetListOrders(bindingSource1, dataGridView1);
+        //}
 
         public FormZakazi()
         {
-           
-
             InitializeComponent();
         }
+        
 
         private void FormZakazi_Load(object sender, EventArgs e)
         {
-            this.restart();
+            
             Orders orders = new Orders();
             orders.GetListOrders(bindingSource1, dataGridView1);
             orders.GetComboBoxList(comboBox1);
@@ -310,8 +314,10 @@ namespace DiplomDokumentooborot.Forms
         }
         public void button1_Click(object sender, EventArgs e)
         {
-            
-            Add.Show(this);
+            AddZakaz Add = new AddZakaz();
+            Add.Show();
+            //this.Close();
+            Add.Focus();
             Orders orders = new Orders();
             orders.reload_list(bindingSource1, dataGridView1);
         }
@@ -442,5 +448,9 @@ namespace DiplomDokumentooborot.Forms
             richTextBox1.Text =
                 dataGridView1[6, dataGridView1.CurrentRow.Index].Value.ToString();
         }
+
+        
+
+        
     }
 }
