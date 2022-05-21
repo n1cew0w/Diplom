@@ -155,6 +155,19 @@ namespace DiplomDokumentooborot.Forms
         {
 
         }
+
+        private void FormOtcheti_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+
+            {
+
+                e.Cancel = true;
+
+                Hide();
+
+            }
+        }
     }
     }
 

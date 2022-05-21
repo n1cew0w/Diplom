@@ -231,7 +231,18 @@ namespace DiplomDokumentooborot
         private void iconPictureBox2_Click(object sender, EventArgs e)
         {
             Reset();
-            currentChildForm.Close();
+            try
+            {
+                if(currentChildForm != null)
+                {
+                    currentChildForm.Hide();
+                }
+            }
+            catch (Exception ex)
+            {
+               
+            }
+            
         }
 
         private void timer1_Tick(object sender, EventArgs e)

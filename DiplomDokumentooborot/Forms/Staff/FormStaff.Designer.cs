@@ -214,6 +214,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "FormStaff";
             this.Text = "FormSotrudniki";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormStaff_FormClosing);
             this.Load += new System.EventHandler(this.FormSotrudniki_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();

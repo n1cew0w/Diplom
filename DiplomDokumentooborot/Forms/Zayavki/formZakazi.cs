@@ -449,8 +449,17 @@ namespace DiplomDokumentooborot.Forms
                 dataGridView1[6, dataGridView1.CurrentRow.Index].Value.ToString();
         }
 
-        
+        private void FormZakazi_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
 
-        
+            {
+
+                e.Cancel = true;
+
+                Hide();
+
+            }
+        }
     }
 }

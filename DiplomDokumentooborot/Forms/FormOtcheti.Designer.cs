@@ -118,6 +118,7 @@
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Name = "FormOtcheti";
             this.Text = "Отчеты";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormOtcheti_FormClosing);
             this.Load += new System.EventHandler(this.FormOtcheti_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
