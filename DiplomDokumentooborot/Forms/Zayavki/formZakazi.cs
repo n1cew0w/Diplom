@@ -9,11 +9,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using Excel = Microsoft.Office.Interop.Excel;
+using YandexDisk.Client.Clients;
+using YandexDisk.Client.Http;
+using YandexDisk.Client.Protocol;
+using System.IO;
 
 namespace DiplomDokumentooborot.Forms
 {
     public partial class FormZakazi : Form
     {
+        
 
         
         
@@ -267,11 +272,74 @@ namespace DiplomDokumentooborot.Forms
         {
             InitializeComponent();
         }
-        
+        class YandexDisk
+        {
+            public async void GetSomeFiles(ListView listView1)
+            {   string status = " (Не обработано)";
+                string status2 = "(Обработано)";
+                //https://localhost:1337/callback#access_token=AQAAAAAMGeW_AAfSUTnWf4rWjUYavTHgNvrryg4&token_type=bearer&expires_in=31536000
+                var api = new DiskHttpApi("AQAAAAAMGeW_AAfSUTnWf4rWjUYavTHgNvrryg4");
+                var roodFolderData = await api.MetaInfo.GetInfoAsync(new ResourceRequest { Path = "/DownloadFolder" });
+                foreach (var item in roodFolderData.Embedded.Items)
+                {
+                    listView1.Items.Add($"{item.Name}{status}");
+                    
+                }
+            }
+            public async void SetStatus(ListView listView)
+            {
+                var api = new DiskHttpApi("AQAAAAAMGeW_AAfSUTnWf4rWjUYavTHgNvrryg4");
+                var roodFolderData = await api.MetaInfo.GetInfoAsync(new ResourceRequest { Path = "/DownloadFolder" });
+                
+                
+                
+
+            }
+
+            public async void UploadDirektor(ListView listView1, TextBox txtFile)
+            {
+                var api = new DiskHttpApi("AQAAAAAMGeW_AAfSUTnWf4rWjUYavTHgNvrryg4");
+                const string folderName = "DownloadFolder";
+                var roodFolderData = await api.MetaInfo.GetInfoAsync(new ResourceRequest { Path = "/" });
+                if (!roodFolderData.Embedded.Items.Any(i => i.Type == ResourceType.Dir && i.Name.Equals(folderName)))
+                {
+                    await api.Commands.CreateDictionaryAsync("/" + folderName);
+                }
+
+                var link = await api.Files.GetUploadLinkAsync("/" + folderName + "/" + Path.GetFileName(txtFile.Text), overwrite: false);
+                using (var fs = File.OpenRead(txtFile.Text))
+                {
+                    await api.Files.UploadAsync(link, fs);
+                }
+                listView1.Clear();
+                YandexDisk yandexDisk = new YandexDisk();
+                yandexDisk.GetSomeFiles(listView1);
+            }
+            public async void UploadSotrudnik(ListView listView1, TextBox txtFile)
+            {
+                var api = new DiskHttpApi("AQAAAAAMGeW_AAfSUTnWf4rWjUYavTHgNvrryg4");
+                const string folderName = "Sotrudnik";
+                var roodFolderData = await api.MetaInfo.GetInfoAsync(new ResourceRequest { Path = "/" });
+                if (!roodFolderData.Embedded.Items.Any(i => i.Type == ResourceType.Dir && i.Name.Equals(folderName)))
+                {
+                    await api.Commands.CreateDictionaryAsync("/" + folderName);
+                }
+
+                var link = await api.Files.GetUploadLinkAsync("/" + folderName + "/" + Path.GetFileName(txtFile.Text), overwrite: false);
+                using (var fs = File.OpenRead(txtFile.Text))
+                {
+                    await api.Files.UploadAsync(link, fs);
+                }
+                listView1.Clear();
+                YandexDisk yandexDisk = new YandexDisk();
+                yandexDisk.GetSomeFiles(listView1);
+            }
+        }
 
         private void FormZakazi_Load(object sender, EventArgs e)
         {
-            
+            YandexDisk yandexDisk = new YandexDisk();
+            yandexDisk.GetSomeFiles(listView1);
             Orders orders = new Orders();
             orders.GetListOrders(bindingSource1, dataGridView1);
             orders.GetComboBoxList(comboBox1);
@@ -440,6 +508,7 @@ namespace DiplomDokumentooborot.Forms
             comboBox1.Text = "";
             Orders orders = new Orders();
             orders.GetListOrders(bindingSource1, dataGridView1);
+            bindingSource1.Filter = "Исполнитель LIKE'" + comboBox1.Text + "%'";
 
         }
 
@@ -460,6 +529,43 @@ namespace DiplomDokumentooborot.Forms
                 Hide();
 
             }
+        }
+        DiskHttpApi api = new DiskHttpApi("AQAAAAAMGeW_AAfSUTnWf4rWjUYavTHgNvrryg4");
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            DialogResult result = openFileDialog1.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                this.txtFile.Text = openFileDialog1.FileName;
+            }
+        }
+
+        private async void button7_Click(object sender, EventArgs e)
+        {
+            
+            if(comboBox2.Text == "Сотруднику")
+            {
+                YandexDisk yandexDisk = new YandexDisk();
+                yandexDisk.UploadSotrudnik(listView1, txtFile);
+            }
+            else
+            {
+                YandexDisk yandexDisk = new YandexDisk();
+                yandexDisk.UploadDirektor(listView1, txtFile);
+            }
+        }
+
+        private async void button9_Click(object sender, EventArgs e)
+        {
+            
+            
+        }
+
+        private async void обработаноToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

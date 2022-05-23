@@ -70,6 +70,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\OtchetiSotr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OtchetiSotr.Designer.cs">
+      <DependentUpon>OtchetiSotr.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Staff\FormDogovor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +127,9 @@
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\OtchetiSotr.resx">
+      <DependentUpon>OtchetiSotr.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Staff\FormDogovor.resx">
       <DependentUpon>FormDogovor.cs</DependentUpon>
     </EmbeddedResource>

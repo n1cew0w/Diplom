@@ -17,6 +17,8 @@ namespace DiplomDokumentooborot.Forms
         MySqlConnection conn;
         public class OrdersAdd
         {
+            FormZakazi form = new FormZakazi();
+            
            
             public void InsertApp(DateTimePicker dateTimePicker1, TextBox textBox2, ComboBox comboBox1, ComboBox comboBox2, ComboBox comboBox3,RichTextBox richTextBox1)
             {

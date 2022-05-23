@@ -116,14 +116,15 @@ namespace DiplomDokumentooborot
                 //И в зависимости от того, какая роль (цифра) хранится в поле класса и передана в метод, показываются те или иные кнопки.
                
                 case 1:
-                    
+                    iconButton5.Hide();
 
                     break;
                 case 2:
                     iconButton1.Enabled = false;
                     iconButton1.BackColor = Color.Transparent;
                     iconButton1.Text = "Недоступно!";
-                    form.button1.Enabled = false;   
+                    iconButton3.Hide();
+                    
                    
 
 
@@ -285,6 +286,14 @@ namespace DiplomDokumentooborot
 
             System.Diagnostics.Process.Start(Application.ExecutablePath); 
             this.Close(); 
+        }
+
+        private void iconButton5_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color3);
+
+            OpenChildForm(new OtchetiSotr());
+            lblTitleChildForm.Text = "Документы";
         }
     }
 }
