@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using YandexDisk.Client.Clients;
+using YandexDisk.Client.Http;
+using YandexDisk.Client.Protocol;
 
 namespace DiplomDokumentooborot.Forms
 {
@@ -109,7 +112,16 @@ namespace DiplomDokumentooborot.Forms
                     conn.Close();
                 }
             }
-            
+            public async void GetSomeFiles(ComboBox comboBox1)
+            {
+                //https://localhost:1337/callback#access_token=AQAAAAAMGeW_AAfSUTnWf4rWjUYavTHgNvrryg4&token_type=bearer&expires_in=31536000
+                var api = new DiskHttpApi("AQAAAAAMGeW_AAfSUTnWf4rWjUYavTHgNvrryg4");
+                var roodFolderData = await api.MetaInfo.GetInfoAsync(new ResourceRequest { Path = "/Sotrudnik" });
+                foreach (var item in roodFolderData.Embedded.Items)
+                {
+                    comboBox1.Items.Add($"{item.Name}");
+                }
+            }
 
         }
         
@@ -123,8 +135,9 @@ namespace DiplomDokumentooborot.Forms
             OrdersAdd orders = new OrdersAdd();
             conn = new MySqlConnection(connStr);
             orders.GetComboBoxList(comboBox3);
-            
-            
+            orders.GetSomeFiles(comboBox1);
+
+
         }
         FormZakazi f = new FormZakazi();
 

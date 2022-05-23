@@ -57,7 +57,7 @@ namespace DiplomDokumentooborot.Forms
 
             if (result == DialogResult.OK)
             {
-                this.txtFile.Text = openFileDialog1.FileName;
+                this.textBox1.Text = openFileDialog1.FileName;
             }
         }
         public async void DownloadFile()
@@ -99,8 +99,8 @@ namespace DiplomDokumentooborot.Forms
                     await api.Commands.CreateDictionaryAsync("/" + folderName);
                 }
 
-                var link = await api.Files.GetUploadLinkAsync("/" + folderName + "/" + Path.GetFileName(txtFile.Text), overwrite: false);
-                using (var fs = File.OpenRead(txtFile.Text))
+                var link = await api.Files.GetUploadLinkAsync("/" + folderName + "/" + Path.GetFileName(textBox1.Text), overwrite: false);
+                using (var fs = File.OpenRead(textBox1.Text))
                 {
                     await api.Files.UploadAsync(link, fs);
                 }
@@ -117,8 +117,8 @@ namespace DiplomDokumentooborot.Forms
                     await api.Commands.CreateDictionaryAsync("/" + folderName);
                 }
 
-                var link = await api.Files.GetUploadLinkAsync("/" + folderName + "/" + Path.GetFileName(txtFile.Text), overwrite: false);
-                using (var fs = File.OpenRead(txtFile.Text))
+                var link = await api.Files.GetUploadLinkAsync("/" + folderName + "/" + Path.GetFileName(textBox1.Text), overwrite: false);
+                using (var fs = File.OpenRead(textBox1.Text))
                 {
                     await api.Files.UploadAsync(link, fs);
                 }
@@ -132,6 +132,40 @@ namespace DiplomDokumentooborot.Forms
             DownloadFile();
             var destDir = Path.Combine(Environment.CurrentDirectory, "Download");
             System.Diagnostics.Process.Start(Environment.CurrentDirectory, destDir);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            comboBox1.Text = "";
+            listView2.Clear();
+            GetSomeFiles();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.Text != "")
+            {
+                for (int i = listView2.Items.Count - 1; i >= 0; i--)
+                {
+
+                    var item = listView2.Items[i];
+                    item.BackColor = Color.SlateBlue;
+                    if (item.Text.ToLower().Contains(comboBox1.Text.ToLower()))
+                    {
+                        item.BackColor = Color.Green;
+
+                    }
+                    else
+                    {
+
+                    }
+                }
+
+            }
+            else
+            {
+
+            }
         }
     }
 }

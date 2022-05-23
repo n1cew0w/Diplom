@@ -84,19 +84,13 @@
             this.label3.ForeColor = System.Drawing.Color.Transparent;
             this.label3.Location = new System.Drawing.Point(23, 116);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 13);
+            this.label3.Size = new System.Drawing.Size(58, 13);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Тип проблемы";
+            this.label3.Text = "Документ";
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Доступ к интернету",
-            "Антивирусная защита",
-            "Офисные программы",
-            "Принтер, сканер и т.п",
-            "Телефония"});
             this.comboBox1.Location = new System.Drawing.Point(120, 113);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(213, 21);
@@ -106,11 +100,7 @@
             // 
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
-            "Новая",
-            "Отменена",
-            "В работе",
-            "Выполнена",
-            "Не выполнена"});
+            "Не обработанный"});
             this.comboBox2.Location = new System.Drawing.Point(120, 162);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(213, 21);

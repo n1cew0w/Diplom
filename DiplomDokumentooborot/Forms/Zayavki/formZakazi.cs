@@ -123,7 +123,7 @@ namespace DiplomDokumentooborot.Forms
                 //Получаем ID пользователя
                 var id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
                 //string id = class_edit_user.id;
-                string SQL_izm = "UPDATE applications SET status= 'Новая' where id=" + id;
+                string SQL_izm = "UPDATE applications SET status= 'Не обработанная' where id=" + id;
                 MessageBox.Show(SQL_izm);
                 MySqlConnection conn = new MySqlConnection("server=chuc.caseum.ru;port=33333;user=st_1_18_13;database=is_1_18_st13_VKR;password=72511715;");
                 conn.Open();
@@ -142,7 +142,7 @@ namespace DiplomDokumentooborot.Forms
                 //Получаем ID пользователя
                 var id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
                 //string id = class_edit_user.id;
-                string SQL_izm = "UPDATE applications SET status= 'Отменена' where id=" + id;
+                string SQL_izm = "UPDATE applications SET status= 'Нужна печать' where id=" + id;
                 MessageBox.Show(SQL_izm);
                 MySqlConnection conn = new MySqlConnection("server=chuc.caseum.ru;port=33333;user=st_1_18_13;database=is_1_18_st13_VKR;password=72511715;");
                 conn.Open();
@@ -338,8 +338,7 @@ namespace DiplomDokumentooborot.Forms
 
         private void FormZakazi_Load(object sender, EventArgs e)
         {
-            YandexDisk yandexDisk = new YandexDisk();
-            yandexDisk.GetSomeFiles(listView1);
+           
             Orders orders = new Orders();
             orders.GetListOrders(bindingSource1, dataGridView1);
             orders.GetComboBoxList(comboBox1);
@@ -414,11 +413,11 @@ namespace DiplomDokumentooborot.Forms
             Не выполнена*/
             if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Статус" && dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
-                if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "Новая")
+                if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "Не обработанный")
                 {
                     dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightGoldenrodYellow;
                 }
-                if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "Отменена")
+                if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "Нужна печать")
                 {
                     dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.IndianRed;
                 }
@@ -530,42 +529,14 @@ namespace DiplomDokumentooborot.Forms
 
             }
         }
-        DiskHttpApi api = new DiskHttpApi("AQAAAAAMGeW_AAfSUTnWf4rWjUYavTHgNvrryg4");
+       
 
-        private void button8_Click(object sender, EventArgs e)
-        {
-            DialogResult result = openFileDialog1.ShowDialog();
+        
 
-            if (result == DialogResult.OK)
-            {
-                this.txtFile.Text = openFileDialog1.FileName;
-            }
-        }
+        
 
-        private async void button7_Click(object sender, EventArgs e)
-        {
-            
-            if(comboBox2.Text == "Сотруднику")
-            {
-                YandexDisk yandexDisk = new YandexDisk();
-                yandexDisk.UploadSotrudnik(listView1, txtFile);
-            }
-            else
-            {
-                YandexDisk yandexDisk = new YandexDisk();
-                yandexDisk.UploadDirektor(listView1, txtFile);
-            }
-        }
+       
 
-        private async void button9_Click(object sender, EventArgs e)
-        {
-            
-            
-        }
-
-        private async void обработаноToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-        }
+       
     }
 }
