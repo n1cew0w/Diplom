@@ -116,7 +116,7 @@ namespace DiplomDokumentooborot.Forms
             {
                 //https://localhost:1337/callback#access_token=AQAAAAAMGeW_AAfSUTnWf4rWjUYavTHgNvrryg4&token_type=bearer&expires_in=31536000
                 var api = new DiskHttpApi("AQAAAAAMGeW_AAfSUTnWf4rWjUYavTHgNvrryg4");
-                var roodFolderData = await api.MetaInfo.GetInfoAsync(new ResourceRequest { Path = "/Sotrudnik" });
+                var roodFolderData = await api.MetaInfo.GetInfoAsync(new ResourceRequest { Path = "/DownloadFolder" });
                 foreach (var item in roodFolderData.Embedded.Items)
                 {
                     comboBox1.Items.Add($"{item.Name}");
