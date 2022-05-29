@@ -9,6 +9,14 @@ using YandexDisk.Client.Protocol;
 
 namespace DiplomDokumentooborot
 {
+    static class SomeClass
+    {
+        //Статичное поле, которое хранит значение для передачи его между формами
+        public static string variable_class1;
+        public static string dogovorName;
+
+
+    }
     static class class_edit_user
     {
         public static string id { get; set; }

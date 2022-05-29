@@ -56,11 +56,15 @@ namespace DiplomDokumentooborot.Forms.Staff
                         Format: false,
                         ReplaceWith: missing, Replace: replace);
                 }
-                object newFileName = Path.Combine(_fileInfo.DirectoryName, DateTime.Now.ToString("yyyyMMdd HHmmss") + _fileInfo.Name);
+                object newFileName = Path.Combine(_fileInfo.DirectoryName, SomeClass.dogovorName + _fileInfo.Name);
+                app.Visible = true;
                 app.ActiveDocument.SaveAs2(newFileName);
                 
-                
-                
+
+
+
+
+
             }
             catch (Exception ex)
             {

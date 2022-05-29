@@ -47,13 +47,11 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.обработаноToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.button6 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.button7 = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -63,6 +61,12 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.button8 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
@@ -71,19 +75,19 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(197, 12);
+            this.button2.Location = new System.Drawing.Point(125, 20);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(140, 35);
+            this.button2.Size = new System.Drawing.Size(103, 35);
             this.button2.TabIndex = 4;
-            this.button2.Text = "Удалить";
+            this.button2.Text = "Удалить заявку";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(13, 12);
+            this.button1.Location = new System.Drawing.Point(13, 20);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(170, 35);
+            this.button1.Size = new System.Drawing.Size(106, 35);
             this.button1.TabIndex = 5;
             this.button1.Text = "Добавить заявку";
             this.button1.UseVisualStyleBackColor = true;
@@ -109,39 +113,39 @@
             this.отмененаToolStripMenuItem,
             this.выполненаToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 114);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(175, 92);
             // 
             // новаяToolStripMenuItem
             // 
             this.новаяToolStripMenuItem.Name = "новаяToolStripMenuItem";
-            this.новаяToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.новаяToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.новаяToolStripMenuItem.Text = "Не обработанный";
             this.новаяToolStripMenuItem.Click += new System.EventHandler(this.новаяToolStripMenuItem_Click);
             // 
             // вРаботеToolStripMenuItem
             // 
             this.вРаботеToolStripMenuItem.Name = "вРаботеToolStripMenuItem";
-            this.вРаботеToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.вРаботеToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.вРаботеToolStripMenuItem.Text = "В работе ";
             this.вРаботеToolStripMenuItem.Click += new System.EventHandler(this.вРаботеToolStripMenuItem_Click);
             // 
             // отмененаToolStripMenuItem
             // 
             this.отмененаToolStripMenuItem.Name = "отмененаToolStripMenuItem";
-            this.отмененаToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.отмененаToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.отмененаToolStripMenuItem.Text = "Нужна печать";
             this.отмененаToolStripMenuItem.Click += new System.EventHandler(this.отмененаToolStripMenuItem_Click);
             // 
             // выполненаToolStripMenuItem
             // 
             this.выполненаToolStripMenuItem.Name = "выполненаToolStripMenuItem";
-            this.выполненаToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.выполненаToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.выполненаToolStripMenuItem.Text = "Выполнена";
             this.выполненаToolStripMenuItem.Click += new System.EventHandler(this.выполненаToolStripMenuItem_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(492, 12);
+            this.button3.Location = new System.Drawing.Point(348, 20);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(147, 35);
             this.button3.TabIndex = 7;
@@ -195,7 +199,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(882, 22);
+            this.label2.Location = new System.Drawing.Point(900, 28);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(237, 25);
             this.label2.TabIndex = 13;
@@ -220,11 +224,11 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(343, 12);
+            this.button6.Location = new System.Drawing.Point(234, 20);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(137, 35);
+            this.button6.Size = new System.Drawing.Size(108, 35);
             this.button6.TabIndex = 14;
-            this.button6.Text = "Изменить";
+            this.button6.Text = "Изменить заявку";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
@@ -259,14 +263,6 @@
             this.button7.Text = "Изменить заявку";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(171, 414);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 23;
             // 
             // comboBox3
             // 
@@ -318,11 +314,11 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(198, 393);
+            this.label5.Location = new System.Drawing.Point(172, 393);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(78, 18);
+            this.label5.Size = new System.Drawing.Size(120, 18);
             this.label5.TabIndex = 28;
-            this.label5.Text = "Документ";
+            this.label5.Text = "ФИО заказчика";
             // 
             // label6
             // 
@@ -367,12 +363,58 @@
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(723, 34);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(154, 21);
+            this.button4.TabIndex = 33;
+            this.button4.Text = "Заполнить документ";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click_1);
+            // 
+            // comboBox5
+            // 
+            this.comboBox5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox5.FormattingEnabled = true;
+            this.comboBox5.Items.AddRange(new object[] {
+            "Договор на разработку сайта",
+            "Договор на разработку программного обеспечения"});
+            this.comboBox5.Location = new System.Drawing.Point(517, 34);
+            this.comboBox5.Name = "comboBox5";
+            this.comboBox5.Size = new System.Drawing.Size(200, 21);
+            this.comboBox5.TabIndex = 34;
+            this.toolTip1.SetToolTip(this.comboBox5, "Выбраный договор");
+            this.comboBox5.SelectedIndexChanged += new System.EventHandler(this.comboBox5_SelectedIndexChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(514, 9);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(134, 18);
+            this.label9.TabIndex = 35;
+            this.label9.Text = "Выбор документа";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(175, 414);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(117, 20);
+            this.textBox2.TabIndex = 36;
+            // 
             // FormZakazi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
             this.ClientSize = new System.Drawing.Size(1161, 498);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.comboBox5);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -382,7 +424,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBox4);
             this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.richTextBox2);
             this.Controls.Add(this.dateTimePicker1);
@@ -398,7 +439,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "FormZakazi";
-            this.Text = "FormZakazi";
+            this.Text = "Заявки";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormZakazi_FormClosing);
             this.Load += new System.EventHandler(this.FormZakazi_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -435,7 +476,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.RichTextBox richTextBox2;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.Label label3;
@@ -445,5 +485,10 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

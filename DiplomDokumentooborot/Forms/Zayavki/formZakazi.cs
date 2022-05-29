@@ -13,6 +13,7 @@ using YandexDisk.Client.Clients;
 using YandexDisk.Client.Http;
 using YandexDisk.Client.Protocol;
 using System.IO;
+using DiplomDokumentooborot.Forms.Zayavki;
 
 namespace DiplomDokumentooborot.Forms
 {
@@ -47,7 +48,7 @@ namespace DiplomDokumentooborot.Forms
             {
 
                 //Запрос для вывода строк в БД
-                string commandStr = "SELECT id AS 'ID',date AS Дата,  topic AS 'Тема', type_problem AS 'Документ', status AS 'Статус', ispoln AS 'Исполнитель', message AS 'Исполнитель'  FROM applications";
+                string commandStr = "SELECT id AS 'ID',date AS Дата,  topic AS 'Тема', type_problem AS 'Заказчик', status AS 'Статус', ispoln AS 'Исполнитель', message AS 'Исполнитель'  FROM applications";
                 //Открываем соединение
                 conn.Open();
                 //Объявляем команду, которая выполнить запрос в соединении conn
@@ -61,7 +62,7 @@ namespace DiplomDokumentooborot.Forms
                 //Закрываем соединение
                 conn.Close();
             }
-            public void InsertApp(DateTimePicker dateTimePicker1, TextBox textBox1, ComboBox comboBox2, ComboBox comboBox3, ComboBox comboBox4, RichTextBox richTextBox2)
+            public void InsertApp(DateTimePicker dateTimePicker1, TextBox textBox1, TextBox textBox2, ComboBox comboBox3, ComboBox comboBox4, RichTextBox richTextBox2)
             {
                 string connStr = "server=chuc.caseum.ru;port=33333;user=st_1_18_13;database=is_1_18_st13_VKR;password=72511715;";
 
@@ -69,7 +70,7 @@ namespace DiplomDokumentooborot.Forms
                 //Получение новых параметров пользователя
                 string new_date = dateTimePicker1.Text;
                 string new_topic = textBox1.Text;
-                string new_typeProblem = comboBox2.Text;
+                string new_typeProblem = textBox2.Text;
                 string new_status = comboBox3.Text;
                 string new_ispoln = comboBox4.Text;
                 string message = richTextBox2.Text;
@@ -141,11 +142,11 @@ namespace DiplomDokumentooborot.Forms
                     conn.Close();
                 }
             }
-            public void UpdateApplications(TextBox textBox1, DateTimePicker dateTimePicker1, ComboBox comboBox2, ComboBox comboBox3, ComboBox comboBox4,RichTextBox richTextBox2)
+            public void UpdateApplications(TextBox textBox1, DateTimePicker dateTimePicker1, TextBox textBox2, ComboBox comboBox3, ComboBox comboBox4,RichTextBox richTextBox2)
             {
                 //Получаем ID пользователя
                 string id = class_edit_user.id;
-                string SQL_izm = "UPDATE applications SET date=N'" + dateTimePicker1.Text + "', topic=N'" + textBox1.Text + "', type_problem=N'" + comboBox2.Text + "'," +
+                string SQL_izm = "UPDATE applications SET date=N'" + dateTimePicker1.Text + "', topic=N'" + textBox1.Text + "', type_problem=N'" + textBox2.Text + "'," +
                     "status=N'" + comboBox3.Text + "'," +
                     "ispoln=N'" + comboBox4.Text + "'," +
                     "message=N'" + richTextBox2.Text + "' where id=" + id;
@@ -363,16 +364,16 @@ namespace DiplomDokumentooborot.Forms
         class YandexDisk
         {
             
-            public async void GetSomeFilesComboBox(ComboBox comboBox2)
-            {
-                //https://localhost:1337/callback#access_token=AQAAAAAMGeW_AAfSUTnWf4rWjUYavTHgNvrryg4&token_type=bearer&expires_in=31536000
-                var api = new DiskHttpApi("AQAAAAAMGeW_AAfSUTnWf4rWjUYavTHgNvrryg4");
-                var roodFolderData = await api.MetaInfo.GetInfoAsync(new ResourceRequest { Path = "/DownloadFolder" });
-                foreach (var item in roodFolderData.Embedded.Items)
-                {
-                    comboBox2.Items.Add($"{item.Name}");
-                }
-            }
+            //public async void GetSomeFilesComboBox(ComboBox comboBox2)
+            //{
+            //    //https://localhost:1337/callback#access_token=AQAAAAAMGeW_AAfSUTnWf4rWjUYavTHgNvrryg4&token_type=bearer&expires_in=31536000
+            //    var api = new DiskHttpApi("AQAAAAAMGeW_AAfSUTnWf4rWjUYavTHgNvrryg4");
+            //    var roodFolderData = await api.MetaInfo.GetInfoAsync(new ResourceRequest { Path = "/DownloadFolder" });
+            //    foreach (var item in roodFolderData.Embedded.Items)
+            //    {
+            //        comboBox2.Items.Add($"{item.Name}");
+            //    }
+            //}
             public async void SetStatus(ListView listView)
             {
                 var api = new DiskHttpApi("AQAAAAAMGeW_AAfSUTnWf4rWjUYavTHgNvrryg4");
@@ -389,8 +390,7 @@ namespace DiplomDokumentooborot.Forms
 
         private void FormZakazi_Load(object sender, EventArgs e)
         {
-            YandexDisk yandexDisk = new YandexDisk();
-            yandexDisk.GetSomeFilesComboBox(comboBox2);
+            
              
             HideControls();
             button8.Hide();
@@ -579,9 +579,12 @@ namespace DiplomDokumentooborot.Forms
             string idDataGrid = dataGridView1[0, dataGridView1.CurrentRow.Index].Value.ToString();
             dateTimePicker1.Text = dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString();
             textBox1.Text = dataGridView1[2, dataGridView1.CurrentRow.Index].Value.ToString();
-            comboBox2.Text = dataGridView1[3, dataGridView1.CurrentRow.Index].Value.ToString();
+            textBox2.Text = dataGridView1[3, dataGridView1.CurrentRow.Index].Value.ToString();
             comboBox3.Text = dataGridView1[4, dataGridView1.CurrentRow.Index].Value.ToString();
             comboBox4.Text = dataGridView1[5, dataGridView1.CurrentRow.Index].Value.ToString();
+
+           string klient = dataGridView1[3, dataGridView1.CurrentRow.Index].Value.ToString();
+            SomeClass.variable_class1 = klient;
         }
 
         private void FormZakazi_FormClosing(object sender, FormClosingEventArgs e)
@@ -599,7 +602,7 @@ namespace DiplomDokumentooborot.Forms
         public void ShowControls()
         {
             textBox1.Show();
-            comboBox2.Show();
+            textBox2.Show();
             comboBox3.Show();
             comboBox4.Show();
             richTextBox2.Show();
@@ -615,7 +618,7 @@ namespace DiplomDokumentooborot.Forms
         public void HideControls()
         {
             textBox1.Hide();
-            comboBox2.Hide();
+            textBox2.Hide();
             comboBox3.Hide();
             comboBox4.Hide();
             dateTimePicker1.Hide();
@@ -637,7 +640,7 @@ namespace DiplomDokumentooborot.Forms
         {
             Orders orders = new Orders();
             orders.GetCurrentID(dataGridView1);
-            orders.UpdateApplications(textBox1,dateTimePicker1,comboBox2,comboBox3,comboBox4,richTextBox2);
+            orders.UpdateApplications(textBox1,dateTimePicker1, textBox2, comboBox3,comboBox4,richTextBox2);
             orders.reload_list(bindingSource1, dataGridView1);
             HideControls();
             button8.Hide();
@@ -646,10 +649,37 @@ namespace DiplomDokumentooborot.Forms
         private void button8_Click(object sender, EventArgs e)
         {
             Orders orders = new Orders();
-            orders.InsertApp(dateTimePicker1, textBox1, comboBox2, comboBox3, comboBox4, richTextBox1);
+            orders.InsertApp(dateTimePicker1, textBox1, textBox2, comboBox3, comboBox4, richTextBox2);
             orders.reload_list(bindingSource1, dataGridView1);
             HideControls();
             button8.Hide();
+        }
+        DogovorSait sait = new DogovorSait();
+        DogovorPO po = new DogovorPO();
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            
+            if (comboBox5.Text == "Договор на разработку сайта")
+            {
+                sait.Show();
+            }
+            if (comboBox5.Text == "Договор на разработку программного обеспечения")
+            {
+                po.Show();
+            }
+            else
+            {
+                MessageBox.Show("Выберите нужный документ!");
+            }
+
+        }
+
+        private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            toolTip1.ToolTipTitle = comboBox5.SelectedItem.ToString();
+
+            string dogovor = comboBox5.Text;
+            SomeClass.dogovorName = dogovor;
         }
     }
 }

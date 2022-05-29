@@ -40,6 +40,7 @@ namespace DiplomDokumentooborot.Forms.Staff
             };
 
             helper.Process(items);
+            MessageBox.Show("Трудовой договор сохранен в корневую папку!");
         }
     }
 }
