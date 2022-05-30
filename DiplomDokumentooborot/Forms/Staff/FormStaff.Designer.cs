@@ -32,7 +32,6 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -45,8 +44,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnDelete
@@ -56,7 +56,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDelete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(30, 319);
+            this.btnDelete.Location = new System.Drawing.Point(30, 300);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(147);
             this.btnDelete.MaximumSize = new System.Drawing.Size(800, 35);
             this.btnDelete.Name = "btnDelete";
@@ -73,7 +73,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnUpdate.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(30, 255);
+            this.btnUpdate.Location = new System.Drawing.Point(30, 247);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(147);
             this.btnUpdate.MaximumSize = new System.Drawing.Size(800, 35);
             this.btnUpdate.Name = "btnUpdate";
@@ -150,7 +150,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(30, 381);
+            this.button1.Location = new System.Drawing.Point(31, 351);
             this.button1.Margin = new System.Windows.Forms.Padding(147);
             this.button1.MaximumSize = new System.Drawing.Size(800, 35);
             this.button1.Name = "button1";
@@ -215,7 +215,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(31, 440);
+            this.button2.Location = new System.Drawing.Point(31, 408);
             this.button2.Margin = new System.Windows.Forms.Padding(147);
             this.button2.MaximumSize = new System.Drawing.Size(800, 35);
             this.button2.Name = "button2";
@@ -257,12 +257,14 @@
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.dataGridView1);
+            this.MaximumSize = new System.Drawing.Size(1167, 527);
+            this.MinimumSize = new System.Drawing.Size(1167, 527);
             this.Name = "FormStaff";
-            this.Text = "FormSotrudniki";
+            this.Text = "Сотрудники";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormStaff_FormClosing);
             this.Load += new System.EventHandler(this.FormSotrudniki_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

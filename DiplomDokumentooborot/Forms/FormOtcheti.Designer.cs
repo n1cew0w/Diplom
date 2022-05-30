@@ -197,8 +197,10 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtFile);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.MaximumSize = new System.Drawing.Size(1155, 519);
+            this.MinimumSize = new System.Drawing.Size(1155, 519);
             this.Name = "FormOtcheti";
-            this.Text = "Отчеты";
+            this.Text = "Документы";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormOtcheti_FormClosing);
             this.Load += new System.EventHandler(this.FormOtcheti_Load);
             this.ResumeLayout(false);

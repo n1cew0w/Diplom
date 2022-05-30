@@ -14,6 +14,7 @@ namespace DiplomDokumentooborot
         //Статичное поле, которое хранит значение для передачи его между формами
         public static string variable_class1;
         public static string dogovorName;
+        public static string variable_class2;
 
 
     }

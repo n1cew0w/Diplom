@@ -48,7 +48,7 @@ namespace DiplomDokumentooborot.Forms
             {
 
                 //Запрос для вывода строк в БД
-                string commandStr = "SELECT id AS 'ID',date AS Дата,  topic AS 'Тема', type_problem AS 'Заказчик', status AS 'Статус', ispoln AS 'Исполнитель', message AS 'Исполнитель'  FROM applications";
+                string commandStr = "SELECT id AS 'ID',date AS Дата,  topic AS 'Тема заявки', type_problem AS 'Заказчик', status AS 'Статус', ispoln AS 'Исполнитель', message AS 'Исполнитель'  FROM applications";
                 //Открываем соединение
                 conn.Open();
                 //Объявляем команду, которая выполнить запрос в соединении conn
@@ -406,12 +406,12 @@ namespace DiplomDokumentooborot.Forms
 
 
             //Ширина полей
-            dataGridView1.Columns[0].FillWeight = 10;
-            dataGridView1.Columns[1].FillWeight = 10;
-            dataGridView1.Columns[2].FillWeight = 10;
-            dataGridView1.Columns[3].FillWeight = 10;
-            dataGridView1.Columns[4].FillWeight = 10;
-            dataGridView1.Columns[5].FillWeight = 10;
+            dataGridView1.Columns[0].FillWeight = 5;
+            dataGridView1.Columns[1].FillWeight = 8;
+            dataGridView1.Columns[2].FillWeight = 15;
+            dataGridView1.Columns[3].FillWeight = 15;
+            dataGridView1.Columns[4].FillWeight = 15;
+            dataGridView1.Columns[5].FillWeight = 15;
 
             //Растягивание полей грида
             dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -585,6 +585,8 @@ namespace DiplomDokumentooborot.Forms
 
            string klient = dataGridView1[3, dataGridView1.CurrentRow.Index].Value.ToString();
             SomeClass.variable_class1 = klient;
+            string ispol = dataGridView1[5, dataGridView1.CurrentRow.Index].Value.ToString();
+            SomeClass.variable_class2 = ispol;
         }
 
         private void FormZakazi_FormClosing(object sender, FormClosingEventArgs e)
@@ -656,6 +658,7 @@ namespace DiplomDokumentooborot.Forms
         }
         DogovorSait sait = new DogovorSait();
         DogovorPO po = new DogovorPO();
+        ProektnayaZayavka pz = new ProektnayaZayavka();
         private void button4_Click_1(object sender, EventArgs e)
         {
             
@@ -666,6 +669,10 @@ namespace DiplomDokumentooborot.Forms
             if (comboBox5.Text == "Договор на разработку программного обеспечения")
             {
                 po.Show();
+            }
+            if (comboBox5.Text == "Заявка на создание проекта")
+            {
+                pz.Show();
             }
             else
             {

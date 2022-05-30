@@ -164,6 +164,12 @@
     <Compile Include="Forms\Zayavki\formZakazi.Designer.cs">
       <DependentUpon>formZakazi.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Zayavki\ProektnayaZayavka.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Zayavki\ProektnayaZayavka.Designer.cs">
+      <DependentUpon>ProektnayaZayavka.cs</DependentUpon>
+    </Compile>
     <Compile Include="TestFTP.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,6 +211,9 @@
     <EmbeddedResource Include="Forms\Zayavki\formZakazi.resx">
       <DependentUpon>formZakazi.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Zayavki\ProektnayaZayavka.resx">
+      <DependentUpon>ProektnayaZayavka.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TestFTP.resx">
       <DependentUpon>TestFTP.cs</DependentUpon>
     </EmbeddedResource>
@@ -228,6 +237,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="dogovor-sayt.docx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="obrazec_zayavki.docx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />

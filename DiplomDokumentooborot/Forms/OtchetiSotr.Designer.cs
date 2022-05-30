@@ -195,8 +195,10 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listView2);
+            this.MaximumSize = new System.Drawing.Size(1142, 498);
+            this.MinimumSize = new System.Drawing.Size(1142, 498);
             this.Name = "OtchetiSotr";
-            this.Text = "OtchetiSotr";
+            this.Text = "Документы";
             this.Load += new System.EventHandler(this.OtchetiSotr_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

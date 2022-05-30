@@ -229,7 +229,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "FormDogovor";
-            this.Text = "FormDogovor";
+            this.Text = "Составление трудового договора";
             this.Load += new System.EventHandler(this.FormDogovor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);

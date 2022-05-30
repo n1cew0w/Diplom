@@ -133,7 +133,7 @@
             // 
             this.отмененаToolStripMenuItem.Name = "отмененаToolStripMenuItem";
             this.отмененаToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
-            this.отмененаToolStripMenuItem.Text = "Нужна печать";
+            this.отмененаToolStripMenuItem.Text = "Отменена";
             this.отмененаToolStripMenuItem.Click += new System.EventHandler(this.отмененаToolStripMenuItem_Click);
             // 
             // выполненаToolStripMenuItem
@@ -303,11 +303,11 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(50, 447);
+            this.label4.Location = new System.Drawing.Point(23, 447);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(44, 18);
+            this.label4.Size = new System.Drawing.Size(96, 18);
             this.label4.TabIndex = 27;
-            this.label4.Text = "Тема";
+            this.label4.Text = "Тема заявки";
             // 
             // label5
             // 
@@ -379,7 +379,8 @@
             this.comboBox5.FormattingEnabled = true;
             this.comboBox5.Items.AddRange(new object[] {
             "Договор на разработку сайта",
-            "Договор на разработку программного обеспечения"});
+            "Договор на разработку программного обеспечения",
+            "Заявка на создание проекта"});
             this.comboBox5.Location = new System.Drawing.Point(517, 34);
             this.comboBox5.Name = "comboBox5";
             this.comboBox5.Size = new System.Drawing.Size(200, 21);
@@ -438,6 +439,8 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
+            this.MaximumSize = new System.Drawing.Size(1177, 537);
+            this.MinimumSize = new System.Drawing.Size(1177, 537);
             this.Name = "FormZakazi";
             this.Text = "Заявки";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormZakazi_FormClosing);
